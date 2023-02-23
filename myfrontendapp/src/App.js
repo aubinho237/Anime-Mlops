@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import './App.css';
+import Form from './Form';
 import './App.css';
 
 function App() {
+  const styles = {
+    padding: '20px',
+    margin: '10px',
+    display: "flex",
+    width: "100%",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  };
+
+  const title = {
+    color: "gray",
+    fontSize: "50px",
+    fontWeight: "bold",
+    textShadow: "2px 2px 4px #ddd "
+
+  };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={styles}>
+      <h1 style = {title}>Anime rating prediction</h1>
+      <Form />
     </div>
   );
 }
