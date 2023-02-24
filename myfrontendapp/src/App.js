@@ -1,32 +1,20 @@
-import './App.css';
 import Form from './Form';
 import './App.css';
 
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Routes ,Route } from 'react-router-dom';
+import Prediction from './Prediction';
+
 function App() {
-  const styles = {
-    padding: '20px',
-    margin: '10px',
-    display: "flex",
-    width: "100%",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  };
-
-  const title = {
-    color: "gray",
-    fontSize: "50px",
-    fontWeight: "bold",
-    textShadow: "2px 2px 4px #ddd "
-
-  };
-
-
   return (
-    <div style={styles}>
-      <h1 style = {title}>Anime rating prediction</h1>
-      <Form />
-    </div>
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route exact path="/" element={<Form/>}/>
+          <Route path="/prediction" element={<Prediction/>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
