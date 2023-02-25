@@ -1,6 +1,7 @@
 import './Form.css';
-import './Prediction.js';
+import Prediction from '../Prediction/Prediction';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import NavBar from '../NavBar';
 
 function Form() {
   const styles = {
@@ -24,8 +25,10 @@ function Form() {
   };
 
     return (
+      
       <div style={styles}>
-        <h1 style={title}> Anime prediction rating </h1>
+    
+        <h1 style={title}> Anime rating prediction </h1>
         <form className="my-form">
           <div className="form-left">
             <label htmlFor="title">Title</label>

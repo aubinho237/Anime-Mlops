@@ -9,7 +9,7 @@
 
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import Form from './Form';
+import Form from '../Form/Form';
 
 test('renders the form', () => {
   render(
