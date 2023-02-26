@@ -1,6 +1,5 @@
 import React from 'react';
 import './Prediction.css';
-import NavBar from '../NavBar';
 
 const Prediction = () => {
     const styles = {
@@ -25,16 +24,6 @@ const Prediction = () => {
         top: "30%",
         left: "50%",
         transform: "translate(-50%, -50%)",
-    
-      };
-
-      const text = {
-        color: "black",
-        fontSize: "30px",
-        fontWeight: "bold",
-        textShadow: "2px 2px 4px #ddd ",
-        justifyContent: "center",
-        alignItems: "center",
     
       };
 
