@@ -27,8 +27,22 @@ function Form() {
 
   const [title, setTitle] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const formData = new FormData(event.target);
+
+    try {
+      const response = await fetch('/api/predict-rating', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      console.log(data);
+      setTitle(''); // clear the form input
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleTitleChange = (event) => {
