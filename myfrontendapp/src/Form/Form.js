@@ -2,6 +2,7 @@ import './Form.css';
 import Prediction from '../Prediction/Prediction';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import NavBar from '../NavBar';
+import { useState } from 'react';
 
 function Form() {
   const styles = {
@@ -14,7 +15,7 @@ function Form() {
     alignItems: "center",
   };
 
-  const title = {
+  const titleStyle = {
     color: "gray",
     fontSize: "50px",
     fontWeight: "bold",
@@ -24,15 +25,25 @@ function Form() {
 
   };
 
+  const [title, setTitle] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
     return (
       
       <div style={styles}>
     
-        <h1 style={title}> Anime rating prediction </h1>
-        <form className="my-form">
+        <h1 style={titleStyle}> Anime rating prediction </h1>
+        <form onSubmit={handleSubmit} className="my-form">
           <div className="form-left">
             <label htmlFor="title">Title</label>
-            <input id="title" type="text" />
+            <input id="title" type="text" value={title} onChange={handleTitleChange} />
 
             <label htmlFor="genre">Genre(s)</label>
             <input id="genre" type="text" />
@@ -51,7 +62,7 @@ function Form() {
           <label htmlFor="studio">Studio</label>
           <input id="studio" type="text" />
 
-          <Link to="/prediction"><button type="submit">Submit</button></Link>
+          <Link to={`/prediction/${title}`}><button type="submit">Submit</button></Link>
         </div>
       </form>
     </div>

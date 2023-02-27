@@ -1,5 +1,7 @@
 import React from 'react';
 import './Prediction.css';
+import { useParams } from 'react-router-dom';
+
 
 const Prediction = () => {
     const styles = {
@@ -13,7 +15,7 @@ const Prediction = () => {
         
       };
     
-      const title = {
+      const titleStyle = {
         color: "gray",
         fontSize: "40px",
         fontWeight: "bold",
@@ -27,10 +29,28 @@ const Prediction = () => {
     
       };
 
+      const name = {
+        color: "black",
+        fontSize: "40px",
+        fontWeight: "bold",
+        textShadow: "2px 2px 4px #ddd ",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "absolute",
+        top: "40%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+    
+      };
+
+      const { title } = useParams();
+
   return (
     <div style={styles}>
       <div>
-        <div style={title}> Rating prediction of One Piece  </div>
+        <div style={titleStyle}> Rating prediction of </div>
+        <div style={name}> {title} </div>
+
 
       </div>
       <h1  className='my-prediction'> 70% </h1>
