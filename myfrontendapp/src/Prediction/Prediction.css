@@ -1,0 +1,14 @@
+.my-prediction {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    background-color: #d75959;
+    border-radius: 5px;
+    max-width: 50%;
+    font-size: 100px;
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
