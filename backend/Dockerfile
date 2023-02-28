@@ -1,5 +1,5 @@
 # Use a Python base image
-FROM python:3.9-slim-buster
+FROM python:3
 
 # Set the working directory to /app
 WORKDIR /app
@@ -9,6 +9,8 @@ COPY . /app
 
 # Install any necessary dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m nltk.downloader punkt
+RUN python -m nltk.downloader stopwords
 
 # Set the environment variable for Flask
 ENV FLASK_APP=app.py
@@ -17,4 +19,4 @@ ENV FLASK_APP=app.py
 EXPOSE 5000
 
 # Run the command to start Flask
-CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["python", "app.py", ]

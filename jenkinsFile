@@ -10,14 +10,11 @@ pipeline {
         stage('build from github by checking code') {
             steps {
                 sshagent (credentials: ['jen-git']){
-                    echo 'fetch code'
-                    /*git(url: 'https://github.com/aubinho237/CIwithdocker/',  branch: 'main')*/
                     echo 'build code'
-                    sh 'git branch -d staging-branch'
                     sh 'git checkout -b staging-branch'
                     /*sh 'git switch  staging-branch' */      
                     sh 'pip install -r requirements.txt'
-                    sh 'docker build -f Dockerfile . -t aubinho237/first-docker-hub:latest'
+                    sh 'docker-compose up --build -d'
                     echo 'the docker image successfully builded'
                 }
             }
@@ -25,11 +22,14 @@ pipeline {
         stage('test from github') {
             steps {
                 echo 'running test1: unitest python'
+                sh 'cd backend'
                 sh 'python3 -m pip install flask'
                 sh 'python3 -m unittest'
                 echo 'running the docker image'
-                sh 'docker run -d aubinho237/first-docker-hub:latest'
                 echo 'the docker image successfully run'
+                sh 'cd ../myfrontendapp/src'
+                sh 'npm run test'
+
             }
         }
         stage('deploy to dockerhub') {
