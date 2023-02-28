@@ -20,6 +20,7 @@ def predict():
     data = request.get_json()
     # process the form data here
     # ...
+    print("hello")
     return jsonify({'result': 'success'})
 
 # read dataset from CSV file

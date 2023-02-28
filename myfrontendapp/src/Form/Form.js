@@ -60,13 +60,16 @@ function Form() {
       studio: studio
     };
 
+    console.log(data);
+
     // send a POST request to the backend API
-    axios.post('/api/predict', data)
+    axios.post('http://127.0.0.1:5000/api/predict', data)
       .then((response) => {
         // redirect to the prediction page with the response data
+        console.log(response)
         navigate({
-          pathname: '/prediction',
-          state: { rating: response.data.rating }
+          pathname: '/prediction/' + data.title,
+          state: { rating: response.data.rating } 
         });
       })
       .catch((error) => {
@@ -103,7 +106,7 @@ function Form() {
           <label htmlFor="studio">Studio</label>
           <input id="studio" type="text" value={studio} onChange={(event) => setStudio(event.target.value)}/>
 
-          <Link to={`/prediction/${title}`}><button type="submit">Submit</button></Link>
+         <button type="submit">Submit</button>
         </div>
       </form>
     </div>
