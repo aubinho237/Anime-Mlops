@@ -33,28 +33,14 @@ def index():
     return {"message": "welcome to our application"}
 
 @app.route('/api/predict', methods=['POST'])
-# def predict():
-#     data = request.get_json()
-#     # process the form data here
-#     # ...
-#     print("hello")
-#     return jsonify({'result': 'success'})
-def getUserText():
-    title = request.form.get('title')
-    genre = request.form.get('genre')
-    description = request.form.get('description')
-    type = request.form.get('type')
-    producer = request.form.get('producer')
-    studio = request.form.get('studio')
+def predict():
+    data = request.get_json()
+    # process the form data here
+    # ...
+    print("hello")
+    print(data)
+    return jsonify({'result': 'success'})
 
-    response_data = {'title': title, 'genre': genre, 
-                     'description': description, 
-                     'type': type, 'producer': producer, 
-                     'studio': studio}
-    response = jsonify(response_data)
-    response.status_code = 200
-    print("code done")
-    return response
 
 
 # read dataset from CSV file
