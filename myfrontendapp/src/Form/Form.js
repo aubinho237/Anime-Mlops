@@ -3,6 +3,9 @@ import Prediction from '../Prediction/Prediction';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import NavBar from '../NavBar';
 import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate} from 'react-router-dom';
+
 
 function Form() {
   const styles = {
@@ -25,15 +28,53 @@ function Form() {
 
   };
 
-  const [title, setTitle] = useState('');
+  //const [title, setTitle] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  // };
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };
+  // new things added 
+  const [title, setTitle] = useState('');
+  const [genres, setGenres] = useState('');
+  const [description, setDescription] = useState('');
+  const [type, setType] = useState('');
+  const [producer, setProducer] = useState('');
+  const [studio, setStudio] = useState('');
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // create a data object with the form data
+    const data = {
+      title: title,
+      genres: genres,
+      description: description,
+      type: type,
+      producer: producer,
+      studio: studio
+    };
+
+    // send a POST request to the backend API
+    axios.post('/api/predict', data)
+      .then((response) => {
+        // redirect to the prediction page with the response data
+        navigate({
+          pathname: '/prediction',
+          state: { rating: response.data.rating }
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  //the tail added
 
     return (
       
@@ -43,24 +84,24 @@ function Form() {
         <form onSubmit={handleSubmit} className="my-form">
           <div className="form-left">
             <label htmlFor="title">Title</label>
-            <input id="title" type="text" value={title} onChange={handleTitleChange} />
+            <input id="title" type="text" value={title} onChange={(event) => setTitle(event.target.value)} />
 
             <label htmlFor="genre">Genre(s)</label>
-            <input id="genre" type="text" />
+            <input id="genre" type="text" value={genres} onChange={(event) => setGenres(event.target.value)} />
 
             <label htmlFor="description">Description</label>
-            <textarea id="description" rows="4" />
+            <textarea id="description" rows="4" value={description} onChange={(event) => setDescription(event.target.value)}/>
           </div>
 
         <div className="form-right">
           <label htmlFor="type">Type</label>
-          <input id="type" type="text" />
+          <input id="type" type="text" value={type} onChange={(event) => setType(event.target.value)} />
 
           <label htmlFor="producer">Producer</label>
-          <input id="producer" type="text" />
+          <input id="producer" type="text" value={producer} onChange={(event) => setProducer(event.target.value)} />
 
           <label htmlFor="studio">Studio</label>
-          <input id="studio" type="text" />
+          <input id="studio" type="text" value={studio} onChange={(event) => setStudio(event.target.value)}/>
 
           <Link to={`/prediction/${title}`}><button type="submit">Submit</button></Link>
         </div>
