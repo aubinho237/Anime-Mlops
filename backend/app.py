@@ -1,3 +1,4 @@
+
 from flask import Flask
 from flask_cors import CORS
 from flask import request, jsonify
@@ -49,6 +50,7 @@ anime_df = pd.read_csv("/home/aubain/M2PRO/anime_project/Anime-Mlops/data/Anime_
 @app.route("/api/anime", methods=["GET"])
 def get_anime():
     return jsonify(anime_df.to_dict(orient="records"))
+
 
 if __name__ == "__main__":
     app.run()
