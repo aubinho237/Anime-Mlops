@@ -1,3 +1,4 @@
+
 from flask import Flask
 from flask_cors import CORS
 from flask import request, jsonify
@@ -187,9 +188,14 @@ def predict():
     # process the form data here
     # ...
     print("hello")
+<<<<<<< HEAD
     #return jsonify({'result': 'success'})
     return jsonify(r2)
 
+=======
+    print(data)
+    return jsonify({'result': 'success'})
+>>>>>>> a3f41cfa4c324b11ada26abd7a79441c6d28f20e
 
 
 
@@ -199,6 +205,7 @@ anime_df = pd.read_csv("/home/aubain/M2PRO/anime_project/Anime-Mlops/data/Anime_
 @app.route("/api/anime", methods=["GET"])
 def get_anime():
     return jsonify(anime_df.to_dict(orient="records"))
+
 
 if __name__ == "__main__":
     app.run()

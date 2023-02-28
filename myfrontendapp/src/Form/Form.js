@@ -47,9 +47,8 @@ function Form() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
     // create a data object with the form data
     const data = {
       title: title,
