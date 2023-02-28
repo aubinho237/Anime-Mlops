@@ -10,9 +10,6 @@ COPY . /app
 # Install any necessary dependencies
 RUN npm install
 
-# Build the production version of the app
-RUN npm run build
-
 # Expose the port that the container will listen on
 EXPOSE 8000
 
