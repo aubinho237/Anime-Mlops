@@ -50,5 +50,13 @@ anime_df = pd.read_csv("/home/aubain/M2PRO/anime_project/Anime-Mlops/data/Anime_
 def get_anime():
     return jsonify(anime_df.to_dict(orient="records"))
 
+@api.route("/flask-prometheus-grafana-example/")
+def hello():
+    return jsonify(say_hello())
+
+
+def say_hello():
+    return {"message": "hello"}
+
 if __name__ == "__main__":
     app.run()
