@@ -109,15 +109,3 @@ services:
 
  
   #     - monitoring
-=======
-version: "3.9"
-services:
-  frontend:
-    build: ./frontend
-    ports:
-      - "8000:8000"
-  backend:
-    build: ./backend
-    ports:
-      - "5000:5000"
->>>>>>> a3f41cfa4c324b11ada26abd7a79441c6d28f20e
