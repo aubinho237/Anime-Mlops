@@ -1,16 +1,4 @@
-version: "3.8"
-
-networks:
-  monitoring:
-    driver: bridge
-
-volumes:
-
-  prometheus-data: 
-    driver: local
-  grafana-data:
-    driver: local
-
+version: "3.9"
 services:
 
   backend:
@@ -92,19 +80,4 @@ services:
     container_name: grafana
     # user: "501"
     ports:
-      - "3030:3000"
-    volumes:
-      - ./grafana-data/data:/var/lib/grafana
-      - ./grafana-data/grafana.ini:/etc/grafana/grafana.ini
-      - ./grafana-data/provisioning:/etc/grafana/provisioning
-      # - ./grafana/data: /var/lib/grafana
-    # user: "1000" 
-    depends_on:
-      - prometheus
-    networks:
-      - monitoring
-    restart: unless-stopped
-
-
- 
-  #     - monitoring
+      - "5000:5000"

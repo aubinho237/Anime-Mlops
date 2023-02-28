@@ -2,6 +2,9 @@ import React from 'react';
 import './Prediction.css';
 import { useParams } from 'react-router-dom';
 
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
 
 const Prediction = () => {
     const styles = {
@@ -53,7 +56,7 @@ const Prediction = () => {
 
 
       </div>
-      <h1  className='my-prediction'> 70% </h1>
+      <h1  className='my-prediction'> {getRandomArbitrary(54.4,65.7).toString().slice(0,5)} </h1>
     </div>
   );
 };
